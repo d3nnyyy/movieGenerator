@@ -3,8 +3,29 @@ h1 {
 }
 
 
-.rating-container {
+.slider-container {
   padding-top: 2rem;
+  padding-left: 20rem;
+  padding-right: 20rem
+}
+
+.genre-container {
+  padding-left: 20rem;
+  padding-right: 20rem
+}
+.checkbox-container {
+  display: flex;
+}
+
+.cast-container {
+  padding-left: 20rem;
+  padding-right: 20rem
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding-left: 20rem;
   padding-right: 20rem
 }
