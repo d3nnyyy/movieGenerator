@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Slider from '@mui/material/Slider'
+import { useState } from 'react';
 
 function App() {
+  const [rating, setRating] = useState([0, 10])
+  const handleChange = (event, newValue) => {
+    // if (newValue > rating[0]) {
+    //   setRating([newValue, rating[1]])
+    // }
+    // else {
+    //   setRating([rating[0], newValue])
+    // }
+    console.log(event, newValue)
+    
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='header'>Choose parameters for your movie:</h1>
+      <div className='rating-container'>
+      <h3>Choose the rating of the movie:</h3>
+        <Slider
+        color='secondary'
+        defaultValue={5}
+        valueLabelDisplay="auto"
+        step={1}
+        marks
+        value={rating}
+        onChange={handleChange}
+        min={0}
+        max={10}
+        disableSwap
+      /></div>
     </div>
   );
 }
