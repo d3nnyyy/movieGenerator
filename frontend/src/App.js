@@ -9,7 +9,12 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { TextField } from "@mui/material";
 import {Button} from "@mui/material"
+import LinearProgress from '@mui/material/LinearProgress'
+
 function App() {
+  const [movie, setMovie] = useState('')
+  const [isMovie, setIsMovie] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [rating, setRating] = useState([0, 10]);
   const [year, setYear] = useState([1930, 2023]);
   const [length, setLength] = useState([0, 240]);
@@ -78,7 +83,10 @@ function App() {
     return res
   }
 
+  
   const submitParams = async () => {
+    setIsLoading(true)
+    console.log(isLoading)
     await axios.post('http://localhost:8080/movies/movie', 
     {
       rating:`${rating[0]}-${rating[1]}`,
@@ -88,11 +96,13 @@ function App() {
       desiredCast:`${cast}`
     }
     ).then(response => {
-      console.log(response);
+      setMovie(response.data)
+      setTimeout(function(){setIsLoading(false); setIsMovie(true)}, 1000)
     })
     .catch(error => {
       console.log(error);
     })
+    
     
   }
   const handleRatingChange = (event, newValue) => {
@@ -155,84 +165,97 @@ function App() {
   }));
   return (
     <div className="App">
-      <h1 className="header">Choose the parameters for your movie:</h1>
-      <div className="slider-container">
-        <h3>Choose the rating of the movie:</h3>
-        <Slider
-          color="secondary"
-          valueLabelDisplay="auto"
-          step={1}
-          marks
-          value={rating}
-          onChange={handleRatingChange}
-          min={0}
-          max={10}
-          disableSwap
-        />
+      <div className={`${isLoading ? 'loading' : 'hidden'}`}>
+        <h1 className="loader-title">Loading...</h1>
+        <LinearProgress color="secondary"/>
       </div>
-      <div className="slider-container">
-        <h3>Choose the release year of the movie:</h3>
-        <Slider
-          color="secondary"
-          valueLabelDisplay="auto"
-          value={year}
-          onChange={handleYearChange}
-          min={1930}
-          max={2023}
-          disableSwap
-        />
+      <div className={`${isMovie ? 'movieShowcase' : 'hidden'}`}>
+        <h1>Your movie:</h1>
+        <h2 className="movieText">{movie}</h2>
       </div>
-      <div className="slider-container">
-        <h3>Choose the film length of the movie (in minutes):</h3>
-        <Slider
-          color="secondary"
-          valueLabelDisplay="auto"
-          value={length}
-          onChange={handleLengthChange}
-          step={5}
-          min={45}
-          max={240}
-          disableSwap
-        />
-      </div>
-      <div className="genre-container">
-        <h3>Choose the genre of the film:</h3>
-        <div className="checkbox-container">
+      <div className={`${(isLoading || isMovie) ? 'hidden' : ''}`}>
+        <h1 className="header">Choose the parameters for your movie:</h1>
+        <div className="slider-container">
+          <h3>Choose the rating of the movie:</h3>
+          <Slider
+            color="secondary"
+            valueLabelDisplay="auto"
+            step={1}
+            marks
+            value={rating}
+            onChange={handleRatingChange}
+            min={0}
+            max={10}
+            disableSwap
+          />
+        </div>
+        <div className="slider-container">
+          <h3>Choose the release year of the movie:</h3>
+          <Slider
+            color="secondary"
+            valueLabelDisplay="auto"
+            value={year}
+            onChange={handleYearChange}
+            min={1930}
+            max={2023}
+            disableSwap
+          />
+        </div>
+        <div className="slider-container">
+          <h3>Choose the film length of the movie (in minutes):</h3>
+          <Slider
+            color="secondary"
+            valueLabelDisplay="auto"
+            value={length}
+            onChange={handleLengthChange}
+            step={5}
+            min={45}
+            max={240}
+            disableSwap
+          />
+        </div>
+        <div className="genre-container">
+          <h3>Choose the genre of the film:</h3>
+          <div className="checkbox-container">
+              <FormGroup>
+              <FormControlLabel control={<Checkbox checked={actionChecked} onChange={handleActionChange}/>} label="Action" />
+              <FormControlLabel control={<Checkbox checked={adventureChecked} onChange={handleAdventureChange}/>} label="Adventure" color="secondary"/>
+              <FormControlLabel control={<Checkbox checked={animatedChecked} onChange={handleAnimatedChange} />} label="Animated" color="secondary"/>
+              <FormControlLabel control={<Checkbox checked={comedyChecked} onChange={handleComedyChange}/>} label="Comedy" color="secondary"/>
+        
+              </FormGroup>
             <FormGroup>
-            <FormControlLabel control={<Checkbox checked={actionChecked} onChange={handleActionChange}/>} label="Action" />
-            <FormControlLabel control={<Checkbox checked={adventureChecked} onChange={handleAdventureChange}/>} label="Adventure" color="secondary"/>
-            <FormControlLabel control={<Checkbox checked={animatedChecked} onChange={handleAnimatedChange} />} label="Animated" color="secondary"/>
-            <FormControlLabel control={<Checkbox checked={comedyChecked} onChange={handleComedyChange}/>} label="Comedy" color="secondary"/>
-          
+            <FormControlLabel control={<Checkbox checked={dramaChecked} onChange={handleDramaChange}/>} label="Drama" color="secondary"/>
+              <FormControlLabel control={<Checkbox checked={fantasyChecked} onChange={handleFantasyChange}/>} label="Fantasy" color="secondary"/>
+              <FormControlLabel control={<Checkbox checked={historicalChecked} onChange={handleHistoricalChange}/>} label="Historical" color="secondary"/>
+              <FormControlLabel control={<Checkbox checked={horrorChecked} onChange={handleHorrorChange}/>} label="Horror" color="secondary"/>
             </FormGroup>
-          <FormGroup>
-          <FormControlLabel control={<Checkbox checked={dramaChecked} onChange={handleDramaChange}/>} label="Drama" color="secondary"/>
-            <FormControlLabel control={<Checkbox checked={fantasyChecked} onChange={handleFantasyChange}/>} label="Fantasy" color="secondary"/>
-            <FormControlLabel control={<Checkbox checked={historicalChecked} onChange={handleHistoricalChange}/>} label="Historical" color="secondary"/>
-            <FormControlLabel control={<Checkbox checked={horrorChecked} onChange={handleHorrorChange}/>} label="Horror" color="secondary"/>
-          </FormGroup> 
-          <FormGroup>  
-          <FormControlLabel control={<Checkbox checked={musicalChecked} onChange={handleMusicalChange}/>} label="Musical" color="secondary"/>
-          <FormControlLabel control={<Checkbox checked={noirChecked} onChange={handleNoirChange}/>} label="Noir" color="secondary"/>
-          <FormControlLabel control={<Checkbox checked={romanceChecked} onChange={handleRomanceChange}/>} label="Romance" color="secondary"/>
-          
-          </FormGroup>
-          <FormGroup>
-          <FormControlLabel control={<Checkbox checked={sciencefictionChecked} onChange={handleScienceFictionChange}/>} label="Science Fiction" color="secondary"/>
-          <FormControlLabel control={<Checkbox checked={thrillerChecked} onChange={handleThrillerChange}/>} label="Thriller" color="secondary"/>
-          <FormControlLabel control={<Checkbox checked={westernChecked} onChange={handleWesternChange}/>} label="Western" color="secondary"/>
-          </FormGroup>
-          <div></div>
-
+            <FormGroup>
+            <FormControlLabel control={<Checkbox checked={musicalChecked} onChange={handleMusicalChange}/>} label="Musical" color="secondary"/>
+            <FormControlLabel control={<Checkbox checked={noirChecked} onChange={handleNoirChange}/>} label="Noir" color="secondary"/>
+            <FormControlLabel control={<Checkbox checked={romanceChecked} onChange={handleRomanceChange}/>} label="Romance" color="secondary"/>
+        
+            </FormGroup>
+            <FormGroup>
+            <FormControlLabel control={<Checkbox checked={sciencefictionChecked} onChange={handleScienceFictionChange}/>} label="Science Fiction" color="secondary"/>
+            <FormControlLabel control={<Checkbox checked={thrillerChecked} onChange={handleThrillerChange}/>} label="Thriller" color="secondary"/>
+            <FormControlLabel control={<Checkbox checked={westernChecked} onChange={handleWesternChange}/>} label="Western" color="secondary"/>
+            </FormGroup>
+            <div></div>
+          </div>
+        </div>
+        <div className="cast-container">
+        <h3>Input the desired cast for the movie:</h3>
+        <TextField id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={(event) => setCast(event.target.value)} />
+        </div>
+        <div className="button-container">
+          <ColorButton variant="contained" size="Medium" onClick={submitParams}>Generate</ColorButton>
         </div>
       </div>
-      <div className="cast-container">
-      <h3>Input the desired cast for the movie:</h3>
-      <TextField id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={(event) => setCast(event.target.value)} />
-      </div>
-      <div class="button-container">
-        <ColorButton variant="contained" size="Medium" onClick={submitParams}>Generate!</ColorButton>
-      </div>
+      <div className={`${isMovie ? 'buttons-container' : 'hidden'}`}>
+          <ColorButton variant="contained" size="Medium">Regenerate</ColorButton>
+          <ColorButton variant="contained" size="Medium" onClick={function(){setIsMovie(false)}}>Edit parameters</ColorButton>
+        </div>
     </div>
   );
 }

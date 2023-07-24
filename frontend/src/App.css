@@ -27,5 +27,37 @@ h1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding-left: 20rem;
-  padding-right: 20rem
+  padding-right: 20rem;
+}
+
+.buttons-container {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hidden {
+  outline: 1px solid red;
+  display: none;
+}
+
+.loading {
+  margin: 10rem;
+}
+
+.loader-title {
+  text-align: center;
+}
+
+.movieShowcase {
+  padding: 2rem;
+  white-space: pre-line;
+}
+
+.movieText {
+  font-weight: 500;
 }
