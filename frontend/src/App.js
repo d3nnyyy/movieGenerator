@@ -29,15 +29,70 @@ function App() {
   const [westernChecked, setWesternChecked] = useState(false)
   const [cast, setCast] = useState('')
 
-  const submitParams = () => {
-    axios.post('/movies', {
-      params:{
-        
-      }
-    })
+  const gatherGenres = () => {
+    let genres = []
+    let res = ''
+    if (actionChecked) {
+      genres.push('action, ')
+    }
+    if (adventureChecked) {
+      genres.push('adventure, ')
+    }
+    if (animatedChecked) {
+      genres.push('animated, ')
+    }
+    if (comedyChecked) {
+      genres.push('comedy, ')
+    }
+    if (dramaChecked) {
+      genres.push('drama, ')
+    }
+    if (fantasyChecked) {
+      genres.push('fantasy, ') 
+    }
+    if (historicalChecked) {
+      genres.push('historical, ') 
+    }
+    if (horrorChecked) {
+      genres.push('horror, ')
+    }
+    if (noirChecked) {
+      genres.push('noir, ')
+    }
+    if (musicalChecked) {
+      genres.push('musical, ')
+    }
+    if (romanceChecked) {
+      genres.push('romance, ')
+    }
+    if (sciencefictionChecked) {
+      genres.push('science fiction, ')
+    }
+    if (thrillerChecked) {
+      genres.push('thriller, ')
+    }
+    if (westernChecked) {
+      genres.push('western, ')
+    }
+    genres.forEach((genre) => res += genre)
+    return res
   }
-  const handleCastChange = (event, newValue) => {
-    setCast(newValue)
+
+  const submitParams = () => {
+    // axios.post('/movies', {
+    //   params:{
+    //     'Rating':`${rating[0]}-${rating[1]}`,
+    //     'Release Year':`${year[0]}-${year[1]}`,
+    //     'Genre':gatherGenres(),
+    //     'Desired Cast':`${cast}`
+    //   }
+    // })
+    console.log({
+        'Rating':`${rating[0]}-${rating[1]}`,
+        'Release Year':`${year[0]}-${year[1]}`,
+        'Genre':gatherGenres(),
+        'Desired Cast':`${cast}`
+      })
   }
   const handleRatingChange = (event, newValue) => {
     setRating(newValue);
@@ -172,7 +227,7 @@ function App() {
       </div>
       <div className="cast-container">
       <h3>Input the desired cast for the movie:</h3>
-      <TextField id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={handleCastChange} />
+      <TextField id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={(event) => setCast(event.target.value)} />
       </div>
       <div class="button-container">
         <ColorButton variant="contained" size="Medium" onClick={submitParams}>Generate!</ColorButton>
