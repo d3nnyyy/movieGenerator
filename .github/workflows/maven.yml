@@ -27,8 +27,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Opening the backend directory
-      run: cd backend
+    - name: PWD
+      run: pwd
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
