@@ -78,21 +78,22 @@ function App() {
     return res
   }
 
-  const submitParams = () => {
-    // axios.post('/movies', {
-    //   params:{
-    //     'Rating':`${rating[0]}-${rating[1]}`,
-    //     'Release Year':`${year[0]}-${year[1]}`,
-    //     'Genre':gatherGenres(),
-    //     'Desired Cast':`${cast}`
-    //   }
-    // })
-    console.log({
-        'Rating':`${rating[0]}-${rating[1]}`,
-        'Release Year':`${year[0]}-${year[1]}`,
-        'Genre':gatherGenres(),
-        'Desired Cast':`${cast}`
-      })
+  const submitParams = async () => {
+    await axios.post('http://localhost:8080/movies/movie', 
+    {
+      rating:`${rating[0]}-${rating[1]}`,
+      releaseYear:`${year[0]}-${year[1]}`,
+      filmLength:`${length[0]}-${length[1]}`,
+      genre:gatherGenres(),
+      desiredCast:`${cast}`
+    }
+    ).then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    
   }
   const handleRatingChange = (event, newValue) => {
     setRating(newValue);
