@@ -101,6 +101,7 @@ function App() {
 
   const submitParams = async () => {
     setIsLoading(true)
+    setIsMovie(false)
     console.log(isLoading)
     await axios.post('http://localhost:8080/movies/movie', 
     {
@@ -269,7 +270,7 @@ function App() {
         </div>
       </div>
       <div className={`${isMovie ? 'buttons-container' : 'hidden'}`}>
-          <ColorButton variant="contained" size="Medium">Regenerate</ColorButton>
+          <ColorButton variant="contained" size="Medium" onClick={submitParams}>Regenerate</ColorButton>
           <ColorButton variant="contained" size="Medium" onClick={function(){setIsMovie(false)}}>Edit parameters</ColorButton>
         </div>
     </div>
