@@ -10,7 +10,21 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { TextField } from "@mui/material";
 import {Button} from "@mui/material"
 import LinearProgress from '@mui/material/LinearProgress'
-
+import { createTheme, ThemeProvider } from "@mui/material";
+export const muiTheme = createTheme({
+  components: {
+      MuiCheckbox: {
+          styleOverrides: {
+              root: {
+                  color: '#9c27b0',
+                  '&.Mui-checked': {
+                    color: '#9c27b0', // Set the desired color when the checkbox is checked
+                  },
+              },
+          },
+      },
+  },
+});
 function App() {
   const [movie, setMovie] = useState('')
   const [isMovie, setIsMovie] = useState(false)
@@ -84,6 +98,7 @@ function App() {
   }
 
   
+
   const submitParams = async () => {
     setIsLoading(true)
     console.log(isLoading)
@@ -217,12 +232,12 @@ function App() {
         <div className="genre-container">
           <h3>Choose the genre of the film:</h3>
           <div className="checkbox-container">
+          <ThemeProvider theme={muiTheme}>
               <FormGroup>
-              <FormControlLabel control={<Checkbox checked={actionChecked} onChange={handleActionChange}/>} label="Action" />
+              <FormControlLabel control={<Checkbox checked={actionChecked} onChange={handleActionChange}/>} label="Action" color="primary"/>
               <FormControlLabel control={<Checkbox checked={adventureChecked} onChange={handleAdventureChange}/>} label="Adventure" color="secondary"/>
               <FormControlLabel control={<Checkbox checked={animatedChecked} onChange={handleAnimatedChange} />} label="Animated" color="secondary"/>
               <FormControlLabel control={<Checkbox checked={comedyChecked} onChange={handleComedyChange}/>} label="Comedy" color="secondary"/>
-        
               </FormGroup>
             <FormGroup>
             <FormControlLabel control={<Checkbox checked={dramaChecked} onChange={handleDramaChange}/>} label="Drama" color="secondary"/>
@@ -241,12 +256,13 @@ function App() {
             <FormControlLabel control={<Checkbox checked={thrillerChecked} onChange={handleThrillerChange}/>} label="Thriller" color="secondary"/>
             <FormControlLabel control={<Checkbox checked={westernChecked} onChange={handleWesternChange}/>} label="Western" color="secondary"/>
             </FormGroup>
+            </ThemeProvider>
             <div></div>
           </div>
         </div>
         <div className="cast-container">
         <h3>Input the desired cast for the movie:</h3>
-        <TextField id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={(event) => setCast(event.target.value)} />
+          <TextField color="secondary" className="textField" id="outlined-basic" label="Input the desired cast..." variant="outlined" value={cast} onChange={(event) => setCast(event.target.value)} />
         </div>
         <div className="button-container">
           <ColorButton variant="contained" size="Medium" onClick={submitParams}>Generate</ColorButton>
