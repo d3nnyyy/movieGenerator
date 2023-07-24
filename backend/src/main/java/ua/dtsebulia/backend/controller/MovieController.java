@@ -11,6 +11,7 @@ import ua.dtsebulia.backend.dto.Response;
 @RestController
 @RequestMapping("/movies")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class MovieController {
 
     @Value("${model}")
@@ -22,6 +23,7 @@ public class MovieController {
     private final RestTemplate restTemplate;
 
     @PostMapping("/movie")
+    
     public String getMovie(@RequestBody Prompt prompt) {
 
         String message = String.format(
