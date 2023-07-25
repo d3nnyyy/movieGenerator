@@ -18,7 +18,7 @@ export const muiTheme = createTheme({
         root: {
           color: '#9c27b0',
           '&.Mui-checked': {
-            color: '#9c27b0', // Set the desired color when the checkbox is checked
+            color: '#9c27b0', 
           },
         },
       },
