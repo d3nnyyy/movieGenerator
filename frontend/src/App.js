@@ -113,7 +113,7 @@ function App() {
       }
     ).then(response => {
       setMovie(response.data)
-      setTimeout(function () { setIsLoading(false); setIsMovie(true) }, 1000)
+      setTimeout(function () { setIsLoading(false); setIsMovie(true) }, 50)
     })
       .catch(error => {
         console.log(error);
@@ -191,44 +191,45 @@ function App() {
       </div>
       <div className={`${(isLoading || isMovie) ? 'hidden' : ''}`}>
         <h1 className="header">Choose the parameters for your movie:</h1>
-        <div className="slider-container">
-          <h3>Choose the rating of the movie:</h3>
-          <Slider
-            color="secondary"
-            valueLabelDisplay="auto"
-            step={1}
-            marks
-            value={rating}
-            onChange={handleRatingChange}
-            min={0}
-            max={10}
-            disableSwap
-          />
-        </div>
-        <div className="slider-container">
-          <h3>Choose the release year of the movie:</h3>
-          <Slider
-            color="secondary"
-            valueLabelDisplay="auto"
-            value={year}
-            onChange={handleYearChange}
-            min={1930}
-            max={2023}
-            disableSwap
-          />
-        </div>
-        <div className="slider-container">
-          <h3>Choose the film length of the movie (in minutes):</h3>
-          <Slider
-            color="secondary"
-            valueLabelDisplay="auto"
-            value={length}
-            onChange={handleLengthChange}
-            step={5}
-            min={45}
-            max={240}
-            disableSwap
-          />
+        <div className="sliders-container">
+          <div className="slider-container">
+            <h3>Choose the rating of the movie:</h3>
+            <Slider
+              color="secondary"
+              valueLabelDisplay="auto"
+              step={1}
+              value={rating}
+              onChange={handleRatingChange}
+              min={0}
+              max={10}
+              disableSwap
+            />
+          </div>
+          <div className="slider-container">
+            <h3>Choose the release year of the movie:</h3>
+            <Slider
+              color="secondary"
+              valueLabelDisplay="auto"
+              value={year}
+              onChange={handleYearChange}
+              min={1930}
+              max={2023}
+              disableSwap
+            />
+          </div>
+          <div className="slider-container">
+            <h3>Choose the film length of the movie (in minutes):</h3>
+            <Slider
+              color="secondary"
+              valueLabelDisplay="auto"
+              value={length}
+              onChange={handleLengthChange}
+              step={5}
+              min={45}
+              max={240}
+              disableSwap
+            />
+          </div>
         </div>
         <div className="genre-container">
           <h3>Choose the genre of the film:</h3>

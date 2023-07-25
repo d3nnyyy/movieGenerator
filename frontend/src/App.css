@@ -2,24 +2,9 @@ h1 {
   text-align: center;
 }
 
-
-.slider-container {
-  padding-top: 2rem;
-  padding-left: 20rem;
-  padding-right: 20rem
-}
-
-.genre-container {
-  padding-left: 20rem;
-  padding-right: 20rem
-}
 .checkbox-container {
   display: flex;
-}
-
-.cast-container {
-  padding-left: 20rem;
-  padding-right: 20rem
+  flex-wrap: wrap;
 }
 
 .button-container {
@@ -30,15 +15,7 @@ h1 {
   padding-right: 20rem;
 }
 
-.buttons-container {
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 20rem;
-  padding-right: 20rem;
-  display: flex;
-  justify-content: space-evenly;
-}
+
 
 .hidden {
   outline: 1px solid red;
@@ -60,4 +37,87 @@ h1 {
 
 .movieText {
   font-weight: 500;
+}
+
+.slider-container {
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+
+
+.genre-container {
+  padding-left: 4rem;
+  padding-right: 2rem;
+}
+
+
+.cast-container {
+  padding-left: 4rem;
+  padding-right: 2rem;
+}
+.buttons-container {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 1240px) {
+  .buttons-container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .slider-container {
+    padding-top: 2rem;
+    padding-left: 20rem;
+    padding-right: 20rem
+  }
+  .genre-container {
+    padding-left: 20rem;
+    padding-right: 20rem
+  }
+  .cast-container {
+    padding-left: 20rem;
+    padding-right: 20rem
+  }
+}
+@media (max-width: 768px) {
+  .buttons-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .loading {
+    margin: 1rem;
+  }
+  .buttons-container {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+  .button-container {
+    text-align: center;
+  }
+  .slider-container {
+    padding-top: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .cast-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .genre-container {
+    padding-left: 2rem;
+    padding-right: 1rem
+  }
 }
