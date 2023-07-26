@@ -49,6 +49,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>movie-generator-backend</finalName>
 	</build>
 
 </project>
