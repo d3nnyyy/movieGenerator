@@ -121,6 +121,36 @@ function App() {
 
 
   }
+  const filmLengthMarks = [
+    {
+      value: 45,
+      label: '45 min.',
+    },
+    {
+      value: 240,
+      label: '240 min.',
+    }];
+
+  const ratingMarks = [
+    {
+      value: 0,
+      label: '0'
+    },
+    {
+      value: 10,
+      label:'10'
+    }]
+  const releaseYearMarks = [
+    {
+      value: 1930,
+      label: '1930'
+    },
+    {
+      value: 2023,
+      label: '2023'
+    }
+  ]
+  
   const handleRatingChange = (event, newValue) => {
     setRating(newValue);
   };
@@ -197,11 +227,12 @@ function App() {
             <Slider
               color="secondary"
               valueLabelDisplay="auto"
-              step={1}
+              step={0.5}
               value={rating}
               onChange={handleRatingChange}
               min={0}
               max={10}
+              marks = {ratingMarks}
               disableSwap
             />
           </div>
@@ -214,6 +245,7 @@ function App() {
               onChange={handleYearChange}
               min={1930}
               max={2023}
+              marks = {releaseYearMarks}
               disableSwap
             />
           </div>
@@ -227,6 +259,7 @@ function App() {
               step={5}
               min={45}
               max={240}
+              marks={filmLengthMarks}
               disableSwap
             />
           </div>
