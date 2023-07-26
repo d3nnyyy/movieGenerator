@@ -21,6 +21,11 @@ public class MovieController {
 
     private final RestTemplate restTemplate;
 
+    @GetMapping("/hi")
+    public String sayHi() {
+        return "hi";
+    }
+
     @PostMapping
     public String getMovie(@RequestBody Prompt prompt) {
 
