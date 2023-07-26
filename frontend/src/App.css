@@ -11,8 +11,8 @@ h1 {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding-left: 20rem;
-  padding-right: 20rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 
@@ -106,6 +106,8 @@ h1 {
   }
   .button-container {
     text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .slider-container {
     padding-top: 2rem;
