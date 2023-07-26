@@ -4,11 +4,12 @@ phases:
   build:
     commands:
       - echo Entering the build phase...
+      - cd backend
       - mvn clean package
   post_build:
     commands:
       - echo Build completed successfully!
 artifacts:
   files:
-    - target/movie-generator-backend.jar
+    - backend/target/movie-generator-backend.jar
   discard-paths: yes
