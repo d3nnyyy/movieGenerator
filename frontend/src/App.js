@@ -18,7 +18,7 @@ export const muiTheme = createTheme({
         root: {
           color: '#9c27b0',
           '&.Mui-checked': {
-            color: '#9c27b0', 
+            color: '#9c27b0',
           },
         },
       },
@@ -97,13 +97,13 @@ function App() {
     return res
   }
 
-
+  const URL = 'http://movie-generator.eu-central-1.elasticbeanstalk.com/'
 
   const submitParams = async () => {
     setIsLoading(true)
     setIsMovie(false)
     console.log(isLoading)
-    await axios.post('http://movie-generator-env2.eba-aas3v2ez.eu-central-1.elasticbeanstalk.com/',
+    await axios.post(URL,
       {
         rating: `${rating[0]}-${rating[1]}`,
         releaseYear: `${year[0]}-${year[1]}`,
@@ -138,7 +138,7 @@ function App() {
     },
     {
       value: 10,
-      label:'10'
+      label: '10'
     }]
   const releaseYearMarks = [
     {
@@ -150,7 +150,7 @@ function App() {
       label: '2023'
     }
   ]
-  
+
   const handleRatingChange = (event, newValue) => {
     setRating(newValue);
   };
@@ -232,7 +232,7 @@ function App() {
               onChange={handleRatingChange}
               min={0}
               max={10}
-              marks = {ratingMarks}
+              marks={ratingMarks}
               disableSwap
             />
           </div>
@@ -245,7 +245,7 @@ function App() {
               onChange={handleYearChange}
               min={1930}
               max={2023}
-              marks = {releaseYearMarks}
+              marks={releaseYearMarks}
               disableSwap
             />
           </div>
