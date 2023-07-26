@@ -7,6 +7,11 @@ h1 {
   flex-wrap: wrap;
 }
 
+.checkbox-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .button-container {
   text-align: center;
   margin-top: 1rem;
