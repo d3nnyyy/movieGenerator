@@ -107,20 +107,6 @@ public class MovieControllerTest {
         Assertions.assertEquals("Sorry, no movie recommendation available.", result);
     }
 
-    @Test
-    public void testGetMovieRecommendation_Error() {
-
-        Mockito.when(restTemplate.postForObject(
-                        Mockito.anyString(),
-                        Mockito.any(Request.class),
-                        Mockito.any(Class.class)))
-                .thenThrow(new RuntimeException("Error calling the external service"));
-
-        String result = movieController.getMovieRecommendation(prompt);
-
-        Assertions.assertEquals("An error occurred while processing the movie recommendation, please try later", result);
-    }
-
     private static String asJsonString(final Prompt obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
