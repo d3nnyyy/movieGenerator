@@ -7,6 +7,11 @@ h1 {
   flex-wrap: wrap;
 }
 
+.header {
+  font-weight: 500;
+  padding: 1rem;
+}
+
 .checkbox-column {
   display: flex;
   flex-direction: column;
@@ -27,8 +32,16 @@ h1 {
   display: none;
 }
 
+
+
 .loading {
-  margin: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center;  */
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 10rem;
 }
 
 .loader-title {
@@ -71,6 +84,14 @@ h1 {
 }
 
 @media (min-width: 1240px) {
+  .loading {
+    margin-top: 10rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+  .header {
+    font-weight: 600;
+  }
   .buttons-container {
     text-align: center;
     margin-top: 1rem;
@@ -102,8 +123,14 @@ h1 {
 }
 
 @media (max-width: 425px) {
+
   .loading {
-    margin: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 12rem;
+  }
+  .loader-title {
+    font-weight: 500;
   }
   .buttons-container {
     padding-left: 0rem;
@@ -115,13 +142,13 @@ h1 {
     padding-right: 1rem;
   }
   .slider-container {
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
     padding-left: 3rem;
     padding-right: 3rem;
   }
   .cast-container {
     padding-left: 2rem;
-    padding-right: 2rem;
+    padding-right: 1rem;
   }
   .genre-container {
     padding-left: 2rem;
