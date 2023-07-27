@@ -42,7 +42,7 @@ public class MovieController {
         }
     }
 
-    private static String createMessageFromPrompt(Prompt prompt) {
+    static String createMessageFromPrompt(Prompt prompt) {
         return String.format(
                 """
                         Generate a film recommendation based on user preferences:
