@@ -2,7 +2,7 @@ h1 {
   text-align: center;
 }
 
-.checkbox-container {
+.checkbox-container-desktop {
   display: flex;
   flex-wrap: wrap;
 }
@@ -83,6 +83,10 @@ h1 {
   justify-content: space-evenly;
 }
 
+.checkbox-container-mobile {
+  display: none;
+}
+
 @media (min-width: 1240px) {
   .loading {
     margin-top: 10rem;
@@ -153,5 +157,15 @@ h1 {
   .genre-container {
     padding-left: 2rem;
     padding-right: 1rem
+  }
+}
+
+@media (max-width: 600px) {
+  .checkbox-container-desktop {
+    display: none;
+  }
+  .checkbox-container-mobile {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
