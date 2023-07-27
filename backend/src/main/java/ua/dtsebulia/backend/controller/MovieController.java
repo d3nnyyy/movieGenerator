@@ -10,8 +10,10 @@ import ua.dtsebulia.backend.dto.Response;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin("http://movie-generator.s3-website.eu-central-1.amazonaws.com/")
 public class MovieController {
+
+    private final RestTemplate restTemplate;
 
     @Value("${model}")
     private String model;
@@ -19,17 +21,29 @@ public class MovieController {
     @Value("${url}")
     private String url;
 
-    private final RestTemplate restTemplate;
+    @PostMapping
+    public String getMovieRecommendation(@RequestBody Prompt prompt) {
 
-    @GetMapping("/hi")
-    public String sayHi() {
-        return "hi";
+        String message = createMessageFromPrompt(prompt);
+        Request request = new Request(model, message);
+
+        try {
+
+            Response response = restTemplate.postForObject(url, request, Response.class);
+            if (response != null && response.getChoices() != null && !response.getChoices().isEmpty()) {
+                return response.getChoices().get(0).getMessage().getContent();
+            } else {
+                return "Sorry, no movie recommendation available.";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "An error occurred while processing the movie recommendation, please try later";
+        }
     }
 
-    @PostMapping
-    public String getMovie(@RequestBody Prompt prompt) {
-
-        String message = String.format(
+    private static String createMessageFromPrompt(Prompt prompt) {
+        return String.format(
                 """
                         Generate a film recommendation based on user preferences:
                         Rating: %s
@@ -57,10 +71,6 @@ public class MovieController {
                 prompt.getDesiredCast()
 
         );
-
-        Request request = new Request(model, message);
-        Response response = restTemplate.postForObject(url, request, Response.class);
-        return response.getChoices().get(0).getMessage().getContent();
     }
 
 }
