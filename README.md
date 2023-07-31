@@ -68,4 +68,3 @@ This movie generator web application was collaboratively developed by the follow
 Contributions to this repository are welcome. If you find any bugs or have suggestions for improvements, feel free to create a pull request or open an issue.
 
 Happy movie watching! 🎬🍿
-
