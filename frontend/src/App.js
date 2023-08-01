@@ -401,8 +401,8 @@ const App = () => {
       label: '45 min.',
     },
     {
-      value: 240,
-      label: '240 min.',
+      value: 180,
+      label: '180 min.',
     },
   ];
 
@@ -419,8 +419,8 @@ const App = () => {
 
   const releaseYearMarks = [
     {
-      value: 1930,
-      label: '1930'
+      value: 1940,
+      label: '1940'
     },
     {
       value: 2023,
@@ -473,7 +473,7 @@ const App = () => {
               valueLabelDisplay="auto"
               value={year}
               onChange={handleYearChange}
-              min={1930}
+              min={1940}
               max={2023}
               marks={releaseYearMarks}
               disableSwap
@@ -488,7 +488,7 @@ const App = () => {
               onChange={handleLengthChange}
               step={5}
               min={45}
-              max={240}
+              max={180}
               marks={filmLengthMarks}
               disableSwap
             />
@@ -496,7 +496,7 @@ const App = () => {
         </div>
 
     <div className="genre-container">
-    <h3>Choose the genre of the film:</h3>
+    <h3>Choose the genre of the movie:</h3>
     <ThemeProvider theme={muiTheme}>
     <div className="checkbox-container-desktop">
       <div className="checkbox-column">
