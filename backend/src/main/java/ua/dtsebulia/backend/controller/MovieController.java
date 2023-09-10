@@ -2,6 +2,7 @@ package ua.dtsebulia.backend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import ua.dtsebulia.backend.dto.Prompt;
@@ -10,7 +11,7 @@ import ua.dtsebulia.backend.dto.Response;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("http://movie-generator.s3-website.eu-central-1.amazonaws.com/")
+@CrossOrigin(value = "localhost:3000")
 public class MovieController {
 
     private final RestTemplate restTemplate;
@@ -23,19 +24,29 @@ public class MovieController {
 
     @PostMapping
     public String getMovieRecommendation(@RequestBody Prompt prompt) {
-
         String message = createMessageFromPrompt(prompt);
         Request request = new Request(model, message);
 
         try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
 
-            Response response = restTemplate.postForObject(url, request, Response.class);
+            HttpEntity<Request> requestEntity = new HttpEntity<>(request, headers);
+
+            ResponseEntity<Response> responseEntity = restTemplate.exchange(
+                    url,
+                    HttpMethod.POST,
+                    requestEntity,
+                    Response.class
+            );
+
+            Response response = responseEntity.getBody();
+
             if (response != null && response.getChoices() != null && !response.getChoices().isEmpty()) {
                 return response.getChoices().get(0).getMessage().getContent();
             } else {
                 return "Sorry, no movie recommendation available.";
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             return "An error occurred while processing the movie recommendation, please try later";
