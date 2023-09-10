@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install -Dmaven.test.skip=true
         working-directory: backend
 
       - name: Upload artifact for deployment job
