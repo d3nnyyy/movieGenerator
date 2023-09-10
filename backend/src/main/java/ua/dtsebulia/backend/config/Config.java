@@ -1,5 +1,8 @@
 package ua.dtsebulia.backend.config;
 
+import com.azure.identity.DefaultAzureCredentialBuilder;
+import com.azure.security.keyvault.secrets.SecretClient;
+import com.azure.security.keyvault.secrets.SecretClientBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -14,7 +17,7 @@ public class Config {
 
     @Bean
     public RestTemplate restTemplate() {
-        String key = getSecretKeyFromParameterStore();
+        String key = getSecretKeyFromAzureKeyVault();
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add((request, body, execution) -> {
             request.getHeaders().add("Authorization", "Bearer " + key);
@@ -23,17 +26,15 @@ public class Config {
         return restTemplate;
     }
 
-    private String getSecretKeyFromParameterStore() {
-        SsmClient ssmClient = SsmClient.builder()
-                .credentialsProvider(DefaultCredentialsProvider.create())
-                .region(Region.EU_CENTRAL_1)
-                .build();
+    private String getSecretKeyFromAzureKeyVault() {
+        String keyVaultUrl = "https://movie-generator.vault.azure.net";
+        String secretName = "MOVIE-GENERATOR-SECRET";
 
-        GetParameterRequest parameterRequest = GetParameterRequest.builder()
-                .name("/movie-generator-key")
-                .build();
+        SecretClient secretClient = new SecretClientBuilder()
+                .vaultUrl(keyVaultUrl)
+                .credential(new DefaultAzureCredentialBuilder().build())
+                .buildClient();
 
-        GetParameterResponse parameterResponse = ssmClient.getParameter(parameterRequest);
-        return parameterResponse.parameter().value();
+        return secretClient.getSecret(secretName).getValue();
     }
 }
