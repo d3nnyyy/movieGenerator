@@ -1,6 +1,6 @@
 # Movie Generator
 
-This repository contains the code for a movie generator web application that allows users to generate random movie recommendations based on their preferences. The application consists of a backend deployed on AWS Elastic Beanstalk and a frontend hosted on AWS S3. Continuous integration and deployment (CI/CD) are managed using AWS CodePipeline and AWS CodeBuild.
+This repository contains the code for a movie generator web application that allows users to generate random movie recommendations based on their preferences. The application consists of a backend deployed on Azure App Services and a frontend hosted on Azure App Services as well. Continuous integration and deployment (CI/CD) are managed using GitHub Actions for the backend and Azure DevOps Pipelines for the frontend.
 
 ## Table of Contents
 
@@ -37,8 +37,8 @@ You can access the live website at: [http://movie-generator.s3-website.eu-centra
 
 ### Continuous Integration and Deployment (CI/CD) Technologies:
 
-- AWS CodePipeline: An AWS service that automates the continuous integration and continuous delivery processes, facilitating the deployment of new updates to the live application.
-- AWS CodeBuild: A fully managed build service that compiles the frontend code and generates the necessary artifacts for deployment.
+- GitHub Actions: GitHub's built-in CI/CD system is used for automating the continuous integration and continuous delivery processes for the backend.
+- Azure DevOps Pipelines: Azure DevOps Pipelines are used to automate the build and deployment process for the frontend code.
 
 ## Local Development
 
@@ -47,7 +47,7 @@ To run the application locally for development, follow these steps:
 ### Backend
 
 1. Open the backend project located in the `backend` directory using an IDE or code editor.
-2. Configure AWS credentials to access SSM parameter store.
+2. Configure Azure credentials to access Azure Key Vault.
 3. Build and run the Spring Boot application.
 
 ### Frontend
