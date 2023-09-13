@@ -11,7 +11,7 @@ import ua.dtsebulia.backend.dto.Response;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(value = "localhost:3000")
+@CrossOrigin(value = "*")
 public class MovieController {
 
     private final RestTemplate restTemplate;
