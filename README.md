@@ -13,7 +13,7 @@ This repository contains the code for a movie generator web application that all
 
 ## Website URL
 
-You can access the live website at: [http://movie-generator.s3-website.eu-central-1.amazonaws.com/](http://movie-generator.s3-website.eu-central-1.amazonaws.com/)
+You can access the live website at: [https://movie-generator.azurewebsites.net/](https://movie-generator.azurewebsites.net/)
 
 ## Features
 
