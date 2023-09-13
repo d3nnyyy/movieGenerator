@@ -22,6 +22,11 @@ public class MovieController {
     @Value("${url}")
     private String url;
 
+    @GetMapping("/test")
+    public String test() {
+        return "Hello from backend";
+    }
+
     @PostMapping
     public String getMovieRecommendation(@RequestBody Prompt prompt) {
         String message = createMessageFromPrompt(prompt);
