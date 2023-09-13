@@ -370,7 +370,7 @@ const App = () => {
     return genres.map((genre) => genre + ', ').join('');
   };
 
-  const URL = 'http://movie-generator.eu-central-1.elasticbeanstalk.com/';
+  const URL = 'https://movie-generator-backend.azurewebsites.net/';
 
   const submitParams = async () => {
     setIsGenerating(true);
@@ -495,91 +495,91 @@ const App = () => {
           </div>
         </div>
 
-    <div className="genre-container">
-    <h3>Choose the genre of the movie:</h3>
-    <ThemeProvider theme={muiTheme}>
-    <div className="checkbox-container-desktop">
-      <div className="checkbox-column">
-        {genreOptions.slice(0, 4).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-      <div className="checkbox-column">
-        {genreOptions.slice(4, 8).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-      <div className="checkbox-column">
-        {genreOptions.slice(8, 11).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-      <div className="checkbox-column">
-      {genreOptions.slice(11).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-  </div>
-  <div className="checkbox-container-mobile">
-      <div className="checkbox-column">
-        {genreOptions.slice(0, 4).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      
-        {genreOptions.slice(4, 7).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-      <div className="checkbox-column">
-        {genreOptions.slice(7, 11).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      {genreOptions.slice(11).map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
-            label={genre[0].toUpperCase() + genre.slice(1)}
-            color="secondary"
-          />
-        ))}
-      </div>
-  </div>
-  </ThemeProvider>
+        <div className="genre-container">
+          <h3>Choose the genre of the movie:</h3>
+          <ThemeProvider theme={muiTheme}>
+            <div className="checkbox-container-desktop">
+              <div className="checkbox-column">
+                {genreOptions.slice(0, 4).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+              <div className="checkbox-column">
+                {genreOptions.slice(4, 8).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+              <div className="checkbox-column">
+                {genreOptions.slice(8, 11).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+              <div className="checkbox-column">
+                {genreOptions.slice(11).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="checkbox-container-mobile">
+              <div className="checkbox-column">
+                {genreOptions.slice(0, 4).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+
+                {genreOptions.slice(4, 7).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+              <div className="checkbox-column">
+                {genreOptions.slice(7, 11).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+                {genreOptions.slice(11).map((genre) => (
+                  <FormControlLabel
+                    key={genre}
+                    control={<Checkbox checked={genres.includes(genre)} onChange={() => handleGenreChange(genre)} />}
+                    label={genre[0].toUpperCase() + genre.slice(1)}
+                    color="secondary"
+                  />
+                ))}
+              </div>
+            </div>
+          </ThemeProvider>
         </div>
 
         <div className="cast-container">
