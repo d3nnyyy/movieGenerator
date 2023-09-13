@@ -12,6 +12,10 @@ h1 {
   padding: 1rem;
 }
 
+.checkbox-container-mobile {
+  display: none;
+}
+
 .checkbox-column {
   display: flex;
   flex-direction: column;
@@ -73,6 +77,7 @@ h1 {
   padding-left: 4rem;
   padding-right: 2rem;
 }
+
 .buttons-container {
   text-align: center;
   margin-top: 1rem;
@@ -83,15 +88,22 @@ h1 {
   justify-content: space-evenly;
 }
 
+.checkbox-container-desktop {
+  display: flex;
+  flex-wrap: wrap
+}
+
 @media (min-width: 1240px) {
   .loading {
     margin-top: 10rem;
     margin-left: 10rem;
     margin-right: 10rem;
   }
+
   .header {
     font-weight: 600;
   }
+
   .buttons-container {
     text-align: center;
     margin-top: 1rem;
@@ -101,20 +113,27 @@ h1 {
     display: flex;
     justify-content: space-evenly;
   }
+
+  
+
+
   .slider-container {
     padding-top: 2rem;
     padding-left: 20rem;
     padding-right: 20rem
   }
+
   .genre-container {
     padding-left: 20rem;
     padding-right: 20rem
   }
+
   .cast-container {
     padding-left: 20rem;
     padding-right: 20rem
   }
 }
+
 @media (max-width: 768px) {
   .buttons-container {
     padding-left: 3rem;
@@ -124,32 +143,47 @@ h1 {
 
 @media (max-width: 425px) {
 
+  .checkbox-container-desktop {
+    display: none;
+  }
+
+  .checkbox-container-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
   .loading {
     margin-left: 2rem;
     margin-right: 2rem;
     margin-top: 12rem;
   }
+
   .loader-title {
     font-weight: 500;
   }
+
   .buttons-container {
     padding-left: 0rem;
     padding-right: 0rem;
   }
+
   .button-container {
     text-align: center;
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
   .slider-container {
     /* padding-top: 2rem; */
     padding-left: 3rem;
     padding-right: 3rem;
   }
+
   .cast-container {
     padding-left: 2rem;
     padding-right: 1rem;
   }
+
   .genre-container {
     padding-left: 2rem;
     padding-right: 1rem
